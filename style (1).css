@@ -1,0 +1,237 @@
+/* ---- Shared design tokens: one palette, one type scale, one spacing rhythm ---- */
+:root {
+  --ink: #182430;
+  --muted: #5b6b7a;
+  --paper: #fbfaf7;
+  --surface: #ffffff;
+  --line: #e2e5e0;
+  --accent: #0f766e;
+  --accent-dark: #0b5952;
+  --gold: #c98a2c;
+
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2.5rem;
+
+  --radius: 10px;
+  --font: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font);
+  line-height: 1.5;
+}
+
+h1, h2, h3 { margin: 0; }
+h2 { font-size: 1.1rem; color: var(--muted); margin-bottom: var(--space-2); }
+
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding: var(--space-4) var(--space-3);
+  max-width: 72rem;
+  margin: 0 auto;
+}
+
+.section { display: flex; flex-direction: column; }
+
+/* ---- Buttons (shared) ---- */
+.btn {
+  border: none;
+  border-radius: var(--radius);
+  padding: 0.55rem 1.1rem;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.btn-solid { background: var(--accent); color: white; }
+.btn-solid:hover { background: var(--accent-dark); }
+.btn-ghost { background: transparent; color: var(--accent); border: 1px solid var(--line); }
+
+/* ================= 1. NAVBAR ================= */
+.navbar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-2) var(--space-3);
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
+  flex-wrap: wrap;
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--accent-dark);
+}
+
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  flex: 1 1 auto;         /* the links take up the middle space and can wrap */
+}
+
+.nav-links a {
+  color: var(--ink);
+  text-decoration: none;
+}
+.nav-links a:hover { color: var(--accent); }
+
+.nav-actions {
+  display: flex;
+  gap: var(--space-1);
+  margin-left: auto;      /* pushes the button group to the right edge */
+}
+
+/* ================= 2. CARD ROW ================= */
+.card-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;   /* every card in a row stretches to the same height */
+  gap: var(--space-3);
+}
+
+.card {
+  flex: 1 1 16rem;        /* grow, shrink, sensible basis: no fixed width */
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: var(--space-3);
+}
+
+.card p { flex: 1; color: var(--muted); margin: 0; }   /* text fills remaining space */
+.card .btn { align-self: flex-start; margin-top: auto; }
+
+/* ================= 3. PAGINATION ================= */
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: var(--space-2) var(--space-3);
+}
+
+.page-numbers {
+  display: flex;
+  gap: var(--space-1);
+  margin: 0 auto;         /* keeps the numbers centered between the arrows */
+}
+
+.page-arrow, .page-num {
+  border: 1px solid var(--line);
+  background: var(--paper);
+  border-radius: 6px;
+  min-width: 2.2rem;
+  padding: 0.4rem;
+  cursor: pointer;
+  font: inherit;
+}
+.page-num.is-active { background: var(--accent); color: white; border-color: var(--accent); }
+
+.page-count {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-left: auto;      /* result count anchored to the right edge */
+  white-space: nowrap;
+}
+
+/* ================= 4. COMMENT ================= */
+.comment {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: var(--space-3);
+}
+
+.avatar {
+  flex: 0 0 3rem;         /* the avatar keeps its own fixed size, as allowed */
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: var(--gold);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.comment-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  min-width: 0;           /* lets the text wrap instead of overflowing */
+}
+
+.comment-author { margin: 0; font-weight: 600; }
+.comment-text { margin: 0; color: var(--muted); }
+
+/* ================= 5. PRICING TABLE ================= */
+.pricing {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: var(--space-3);
+}
+
+.plan {
+  flex: 1 1 14rem;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: var(--space-3);
+}
+
+.plan-featured {
+  border: 2px solid var(--accent);
+  padding-top: var(--space-2);      /* the extra badge + border makes this card taller, no fixed height */
+}
+
+.badge {
+  align-self: flex-start;
+  background: var(--accent);
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 999px;
+  padding: 0.15rem 0.6rem;
+  margin: 0 0 var(--space-1) 0;
+}
+
+.price { font-size: 1.6rem; font-weight: 700; margin: 0; }
+.price span { font-size: 0.9rem; font-weight: 400; color: var(--muted); }
+
+.plan ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  color: var(--muted);
+  flex: 1;                /* pushes the button to the bottom, no fixed height needed */
+}
+
+.plan .btn { margin-top: var(--space-2); }
