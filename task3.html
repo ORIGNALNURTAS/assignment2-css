@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Task 3 — Three Layouts, One Markup</title>
+<link rel="stylesheet" href="task3-style.css">
+</head>
+<body>
+
+  <main class="page">
+    <h1>Three layouts, one markup</h1>
+    <p class="hint">The HTML below never changes. Pick a mode — the CSS on the container (and a class-based switch, done here with CSS-only radio buttons since no JavaScript is allowed) reshapes it into a card grid, a compact list, or a magazine front page.</p>
+
+    <!-- CSS-only mode switch: no JavaScript, just :checked selectors below -->
+    <div class="mode-switch">
+      <input type="radio" name="mode" id="mode-grid" checked>
+      <label for="mode-grid">Grid</label>
+      <input type="radio" name="mode" id="mode-list">
+      <label for="mode-list">List</label>
+      <input type="radio" name="mode" id="mode-magazine">
+      <label for="mode-magazine">Magazine</label>
+    </div>
+
+    <section class="gallery">
+
+      <article class="item lead">
+        <div class="item-media m1"></div>
+        <div class="item-body">
+          <h3 class="item-title">The city rebuilds its river walk after the spring floods</h3>
+          <p class="item-text">A long lead story with a lot more text than the rest, so it can carry the magazine mode's larger tile without leaving empty space, and still wrap cleanly in the grid and list modes.</p>
+        </div>
+        <time class="item-date">Sep 2</time>
+      </article>
+
+      <article class="item">
+        <div class="item-media m2"></div>
+        <div class="item-body">
+          <h3 class="item-title">Local bakery wins regional award</h3>
+          <p class="item-text">Short note on the win.</p>
+        </div>
+        <time class="item-date">Sep 3</time>
+      </article>
+
+      <article class="item">
+        <div class="item-media m3"></div>
+        <div class="item-body">
+          <h3 class="item-title">New bike lanes open downtown</h3>
+          <p class="item-text">The second phase of the downtown bike network opened this week, connecting three neighborhoods.</p>
+        </div>
+        <time class="item-date">Sep 4</time>
+      </article>
+
+      <article class="item">
+        <div class="item-media m4"></div>
+        <div class="item-body">
+          <h3 class="item-title">Library extends weekend hours</h3>
+          <p class="item-text">Starting next month.</p>
+        </div>
+        <time class="item-date">Sep 5</time>
+      </article>
+
+      <article class="item">
+        <div class="item-media m5"></div>
+        <div class="item-body">
+          <h3 class="item-title">Farmers market moves to the square</h3>
+          <p class="item-text">A change of venue meant to bring more foot traffic through the old town square on weekends.</p>
+        </div>
+        <time class="item-date">Sep 6</time>
+      </article>
+
+      <article class="item">
+        <div class="item-media m1"></div>
+        <div class="item-body">
+          <h3 class="item-title">School district approves new bus routes</h3>
+          <p class="item-text">Routes take effect after the winter break.</p>
+        </div>
+        <time class="item-date">Sep 7</time>
+      </article>
+
+      <article class="item">
+        <div class="item-media m2"></div>
+        <div class="item-body">
+          <h3 class="item-title">Park renovation enters phase two</h3>
+          <p class="item-text">Crews began work on the playground area this week, with completion expected by early spring, weather allowing.</p>
+        </div>
+        <time class="item-date">Sep 8</time>
+      </article>
+
+      <article class="item">
+        <div class="item-media m3"></div>
+        <div class="item-body">
+          <h3 class="item-title">Volunteers clean the coastal trail</h3>
+          <p class="item-text">Over sixty volunteers took part.</p>
+        </div>
+        <time class="item-date">Sep 9</time>
+      </article>
+
+      <article class="item">
+        <div class="item-media m4"></div>
+        <div class="item-body">
+          <h3 class="item-title">New mural finished on Main Street</h3>
+          <p class="item-text">The mural took the artist three weeks to complete and covers the full side of the corner building.</p>
+        </div>
+        <time class="item-date">Sep 10</time>
+      </article>
+
+      <article class="item">
+        <div class="item-media m5"></div>
+        <div class="item-body">
+          <h3 class="item-title">Community center adds evening classes</h3>
+          <p class="item-text">Registration opens Monday.</p>
+        </div>
+        <time class="item-date">Sep 11</time>
+      </article>
+
+      <article class="item">
+        <div class="item-media m1"></div>
+        <div class="item-body">
+          <h3 class="item-title">Old cinema reopens after restoration</h3>
+          <p class="item-text">The single-screen theater closed for repairs eighteen months ago and reopens this weekend with a short film festival.</p>
+        </div>
+        <time class="item-date">Sep 12</time>
+      </article>
+
+      <article class="item">
+        <div class="item-media m2"></div>
+        <div class="item-body">
+          <h3 class="item-title">Street market extends to Sundays</h3>
+          <p class="item-text">Trial period of two months.</p>
+        </div>
+        <time class="item-date">Sep 13</time>
+      </article>
+
+    </section>
+  </main>
+</body>
+</html>
