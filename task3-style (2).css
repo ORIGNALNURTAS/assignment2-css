@@ -1,0 +1,147 @@
+:root {
+  --ink: #182430;
+  --muted: #5b6b7a;
+  --paper: #fbfaf7;
+  --surface: #ffffff;
+  --line: #e2e5e0;
+  --accent: #0f766e;
+  --accent-dark: #0b5952;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 3rem;
+}
+
+h1 { margin: 0; font-size: 1.4rem; }
+.hint { margin: 0; color: var(--muted); max-width: 46rem; }
+
+/* ---------- CSS-only mode switch (no JavaScript) ---------- */
+.mode-switch input { position: absolute; opacity: 0; pointer-events: none; }
+
+.mode-switch {
+  position: relative;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.mode-switch label {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.4rem 1rem;
+  cursor: pointer;
+  background: var(--surface);
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.mode-switch input:checked + label {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: white;
+}
+
+/* ---------- Shared item look (used by every mode) ---------- */
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-width: 0;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 1rem;
+}
+
+.item-media { aspect-ratio: 16 / 9; border-radius: 8px; flex: 0 0 auto; }
+.m1 { background: #b4dcd6; }
+.m2 { background: #f0d99b; }
+.m3 { background: #d8c2e8; }
+.m4 { background: #f2b8a8; }
+.m5 { background: #a9c4e8; }
+
+.item-body { display: flex; flex-direction: column; gap: 0.35rem; flex: 1; min-width: 0; }
+.item-title { margin: 0; font-size: 1rem; }
+.item-text { margin: 0; color: var(--muted); flex: 1; }
+.item-date { color: var(--muted); font-size: 0.8rem; }
+
+/* =========================================================
+   MODE 1 — GRID (default: checked on load)
+   CSS Grid decides the column count from the window width;
+   Flexbox (the .item column above) lays out each card's inside.
+   ========================================================= */
+.mode-switch:has(#mode-grid:checked) ~ .gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  gap: 1.5rem;
+  align-items: stretch;
+}
+
+/* =========================================================
+   MODE 2 — LIST
+   Flexbox turns the whole gallery into a column of rows,
+   and turns each item itself into a row: media, text, date.
+   ========================================================= */
+.mode-switch:has(#mode-list:checked) ~ .gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.mode-switch:has(#mode-list:checked) ~ .gallery .item {
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+}
+
+.mode-switch:has(#mode-list:checked) ~ .gallery .item-media {
+  flex: 0 0 6rem;
+  aspect-ratio: 1 / 1;
+}
+
+.mode-switch:has(#mode-list:checked) ~ .gallery .item-date {
+  margin-left: auto;         /* date pinned to the right edge of the row */
+  flex: 0 0 auto;
+  align-self: center;
+}
+
+.mode-switch:has(#mode-list:checked) ~ .gallery .item-text {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+/* =========================================================
+   MODE 3 — MAGAZINE
+   CSS Grid places one lead item across several columns and
+   rows; Flexbox still runs the inside of every tile.
+   ========================================================= */
+.mode-switch:has(#mode-magazine:checked) ~ .gallery {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: minmax(9rem, auto);
+  gap: 1rem;
+}
+
+.mode-switch:has(#mode-magazine:checked) ~ .gallery .item.lead {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.mode-switch:has(#mode-magazine:checked) ~ .gallery .item.lead .item-media { flex: 1; }
+.mode-switch:has(#mode-magazine:checked) ~ .gallery .item.lead .item-title { font-size: 1.3rem; }
